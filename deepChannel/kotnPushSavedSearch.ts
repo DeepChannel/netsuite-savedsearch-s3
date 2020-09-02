@@ -17,7 +17,7 @@ import * as s3Push from './kotnHandleS3Push';
 
 function makeTS(d){
 	var d = d || new Date();
-	return d.toISOString().replace(/.\.\d+/, '').replace(/[-:]/g, '');
+	return d.toISOString().replace(/\.\d+/, '').replace(/[-:]/g, '');
 }
 
 function escapeCSV(val){
@@ -92,9 +92,9 @@ export function execute(ctx){
 				var nextParentId = null;
 				search.create({
 					type:'folder',
-					filters:filters, 
+					filters:filters,
 					columns:[
-						'name', 
+						'name',
 						'parent'
 					]
 				}).run().each(f=>{
